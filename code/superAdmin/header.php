@@ -13,3 +13,10 @@ if(!isset($_SESSION["priv"]) || $_SESSION["priv"] != 2){
 
 
 ?>
+<hr>
+-----LEVEL 2 header -----
+
+<a href="./">ALL TEACHER</a>
+<a href="./create.php">NEW TEACHER</a>
+
+<hr>
