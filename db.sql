@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 18, 2023 at 02:48 PM
+-- Generation Time: Aug 21, 2023 at 03:38 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `result_management`
+-- Database: `result_managment_system`
 --
 
 -- --------------------------------------------------------
@@ -113,12 +113,22 @@ CREATE TABLE `subject` (
 
 CREATE TABLE `teacher` (
   `regNo` int(11) NOT NULL,
-  `firstName` varchar(20) NOT NULL,
-  `lastName` varchar(20) NOT NULL,
-  `password` varchar(128) NOT NULL,
+  `firstName` varchar(20) DEFAULT NULL,
+  `lastName` varchar(20) DEFAULT NULL,
+  `password` varchar(32) DEFAULT NULL,
   `email` varchar(50) NOT NULL,
-  `phone` int(10) NOT NULL
+  `phone` int(10) DEFAULT NULL,
+  `isAdmin` int(1) NOT NULL DEFAULT 0 COMMENT '0 teacher\r\n1 admin\r\n2 superadmin'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `teacher`
+--
+
+INSERT INTO `teacher` (`regNo`, `firstName`, `lastName`, `password`, `email`, `phone`, `isAdmin`) VALUES
+(3, 't', 't', '696d29e0940a4957748fe3fc9efd22a3', 'test@mail.com', 34234234, 2),
+(424, 'test', 'test', NULL, 'test1@mail.com', NULL, 0),
+(34534, 'test', NULL, NULL, 'test2@mail.com', NULL, 0);
 
 --
 -- Indexes for dumped tables
@@ -187,6 +197,12 @@ ALTER TABLE `marksrecord`
 --
 ALTER TABLE `subject`
   MODIFY `subId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `teacher`
+--
+ALTER TABLE `teacher`
+  MODIFY `regNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34535;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
